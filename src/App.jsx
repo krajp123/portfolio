@@ -9,5 +9,5 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 
 export default function App() {
-  return <main><Navbar /><div className="page-wrap" id="home"><Home /></div><div className="page-wrap" id="education"><Education /></div><div className="page-wrap" id="experience"><Experience /></div><div className="page-wrap projects-page-wrap"><Projects /></div><div className="page-wrap" id="certificates"><Certificates /></div><div className="page-wrap" id="blog"><About /></div><div className="page-wrap" id="about"><About /></div><div className="page-wrap" id="contact"><Contact /></div><Footer /></main>
+  return <main><Navbar /><div className="page-wrap" id="home"><Home /></div><div className="page-wrap" id="education"><Education /></div><div className="page-wrap" id="experience"><Experience /></div><div className="page-wrap projects-page-wrap"><Projects /></div><div className="page-wrap" id="certificates"><Certificates /></div><div className="page-wrap" id="about"><About /></div><div className="page-wrap" id="contact"><Contact /></div><Footer /></main>
 }

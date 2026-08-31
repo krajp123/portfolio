@@ -48,7 +48,7 @@ export default function Navbar() {
     <nav className="modern-navbar">
       <div className="navbar-container">
         <a href="#home" className="navbar-logo" onClick={(e) => handleNavigation(e, 'home')}>
-          <span className="logo-mark">K</span>
+          <img src="/robot2.png" alt="Robot mascot" className="navbar-robot" />
         </a>
 
         <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>

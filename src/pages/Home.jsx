@@ -134,7 +134,7 @@ export default function Home() {
       </motion.div>
 
       {/* Hero text, sitting directly on the portrait, anchored to the bottom */}
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1400px] flex-col justify-end gap-8 px-6 pb-20 pt-32 sm:px-10 sm:pb-24">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1400px] flex-col justify-end gap-8 px-6 pb-20 pt-0 sm:px-10 sm:pb-24">
         <motion.p {...fade(0.05)} className="font-mono text-xs text-[#F4B942]">
           {'// full-stack developer — MERN'}
         </motion.p>
@@ -188,22 +188,12 @@ export default function Home() {
 
         <motion.div {...fade(0.8)} className="flex flex-wrap items-center gap-5 pt-2">
           <a
-            href="#works"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#F4B942] px-6 py-3 font-body text-sm font-semibold text-[#0A0B0F] transition hover:bg-[#F5C763]"
+            href="#projects"
+            className="group inline-flex items-center gap-2 font-body text-sm font-semibold text-[#F5F1E8]/80 transition hover:text-[#F5F1E8]"
           >
             View my work
             <ArrowUpRight
               size={16}
-              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
-          <a
-            href="#about"
-            className="group inline-flex items-center gap-2 font-body text-sm font-semibold text-[#F5F1E8]/80 underline decoration-[#F4B942]/40 underline-offset-4 transition hover:text-[#F5F1E8]"
-          >
-            My story
-            <ArrowUpRight
-              size={14}
               className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </a>

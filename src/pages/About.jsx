@@ -1,25 +1,23 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import SectionLabel from '../components/SectionLabel'
 
 const skills = [
-  'React',
-  'JavaScript',
-  'Node.js',
-  'Express',
-  'MongoDB',
-  'Tailwind CSS',
-  'Framer Motion',
-  'Git',
+  { name: 'React', level: 90 },
+  { name: 'JavaScript', level: 88 },
+  { name: 'Node.js', level: 75 },
+  { name: 'Express', level: 72 },
+  { name: 'MongoDB', level: 70 },
+  { name: 'Tailwind CSS', level: 85 },
+  { name: 'Framer Motion', level: 65 },
+  { name: 'Git', level: 80 },
 ]
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
   },
 }
 
@@ -33,43 +31,88 @@ const itemVariants = {
 }
 
 export default function About() {
+  const [showSkills, setShowSkills] = useState(false)
+
   return (
     <>
-      <section className="page-intro about-intro" id="about">
-        <SectionLabel number="06">About</SectionLabel>
-        <h1>Full-Stack Developer<br /><em>& Designer.</em></h1>
-        <p>Passionate about building beautiful, functional web experiences with clean code and modern design principles.</p>
-      </section>
+      <section className="about-compact" id="about">
+        
+        <h1>
+          <span>About <em>Me</em></span>
+        </h1>
 
-      <section className="about-main">
-        <div className="about-wrapper">
-          {/* Core Details */}
-          <div className="about-details">
-            <h2>Who I Am</h2>
-            <div className="details-content">
-              <p>I'm a full-stack developer specializing in React and Node.js. I create seamless digital experiences by combining clean code with thoughtful design. My focus is on building performant, scalable applications that users love.</p>
-              <p>When I'm not coding, I explore new technologies and contribute to open-source projects. I'm always eager to learn and collaborate with creative teams.</p>
-            </div>
+        <div className="about-compact__inner about-compact__inner--split">
+          <div className="about-compact__photo">
+            <img src="/about.jpg" alt="Portrait" />
           </div>
 
-          {/* Tech Skills */}
-          <div className="about-skills">
-            <h2>Tech Stack</h2>
-            <motion.div 
-              className="skills-grid"
+          <div className="about-compact__main">
+            <div className="about-compact__intro">
+              <p className="about-compact__kicker">Full-stack developer</p>
+              <h1>Building clean products with thoughtful design.</h1>
+            </div>
+
+            <div className="about-compact__content">
+              <p>
+                I design and build digital experiences that balance performance,
+                usability, and visual clarity. My work focuses on React, Node.js,
+                and modern interfaces that feel polished without being overdone.
+              </p>
+              <p>
+                I enjoy turning complex ideas into simple, reliable product
+                experiences—whether it&apos;s a complete web app or a refined UI.
+              </p>
+
+              <div className="about-compact__meta">
+                <div>
+                  <span>Focus</span>
+                  <strong>Product + UX</strong>
+                </div>
+                <div>
+                  <span>Stack</span>
+                  <strong>React, Node, MongoDB</strong>
+                </div>
+              </div>
+
+              <button
+                className="about-compact__skills-toggle"
+                onClick={() => setShowSkills((prev) => !prev)}
+              >
+                <span className="about-compact__blink-dot" />
+                {showSkills ? 'Hide Skills' : 'View Skills'}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {showSkills && (
+            <motion.div
+              className="about-compact__skills-grid"
               variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
+              exit="hidden"
             >
               {skills.map((skill, idx) => (
-                <motion.div key={idx} className="skill-tag" variants={itemVariants}>
-                  {skill}
+                <motion.div key={idx} className="about-compact__skill-card" variants={itemVariants}>
+                  <div className="about-compact__skill-card-head">
+                    <span>{skill.name}</span>
+                    <span>{skill.level}%</span>
+                  </div>
+                  <div className="about-compact__skill-bar">
+                    <motion.div
+                      className="about-compact__skill-bar-fill"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                    />
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </div>
+          )}
+        </AnimatePresence>
       </section>
     </>
   )
